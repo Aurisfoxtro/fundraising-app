@@ -29,6 +29,10 @@ export default ()=>{
         })
     }
 
+    const handleFileChange =(e) =>{
+        setProfileForm({...profileForm, [e.target.name]: e.target.files[0]})
+    }
+
     const handleValidation = () =>{
         for(let index of Object.keys(profileForm)){
             if(index === 'hourly_rate' && profileForm[index]< 0)
@@ -52,7 +56,7 @@ export default ()=>{
 
         axios.post('/api/profile/create/', profileForm)
         .then(resp => {
-            console.log(resp.data)
+            // console.log(resp.data)
             if(resp.data.status === 'success'){
                 setTimeout( ()=> {
                     navigate('/')
@@ -80,7 +84,7 @@ export default ()=>{
             </div>
             <div className="mb-3">
                 <label className="form-label">Labdaringos idėjos paveikslėlis</label>
-                <input type="file" className="form-control" name="profile_image" value={profileForm.profile_image} onChange={(e)=>handleInputChange(e)}/>
+                <input type="file" className="form-control" name="profile_image" onChange={(e)=>handleFileChange(e)}/>
             </div>
             <div className="mb-3">
                 <label className="form-label">Reikalinga finansavimo suma</label>

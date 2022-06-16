@@ -12,7 +12,7 @@ const Router = express.Router()
 
 const diskStorage = multer.diskStorage({
     destination: async (req, file, cb) => {
-        const path = './uploads/' + req.body.UserId
+        const path = './uploads/' //+ req.body.UserId
         try{
             await access(path)
         }catch{
@@ -55,8 +55,8 @@ const profileSchema = (req, res, next) =>{
         // headline: Joi.string(),
         // subheadline: Joi.string(),
         description: Joi.string(),
-        target_sum: Joi.number(),
-        funded_sum: Joi.number()
+        target_sum: Joi.number()
+        //funded_sum: Joi.number()
         // hourly_rate: Joi.number().required(),
         // location: Joi.string(),
         // UserId: Joi.number().required()
