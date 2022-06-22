@@ -35,8 +35,8 @@ export default ()=>{
 
     const handleValidation = () =>{
         for(let index of Object.keys(profileForm)){
-            if(index === 'hourly_rate' && profileForm[index]< 0)
-                return false
+            // if(index === 'hourly_rate' && profileForm[index]< 0)
+            //     return false
             if(profileForm[index] === ''){
                 return false
             }
@@ -47,14 +47,19 @@ export default ()=>{
     const handleSubmit = (e) =>{
         e.preventDefault()
         
-        // if(!handleValidation()){
-        //     setMessages({message: 'Netinkamai užpildyta forma', status: 'danger'})
-        //     return false
-        // }
+        if(!handleValidation()){
+            setMessages({message: 'Netinkamai užpildyta forma', status: 'danger'})
+            return false
+        }
 
         // profileForm.UserId = userid
 
-        axios.post('/api/profile/create/', profileForm)
+        const form = new FormData();
+        Object.entries(profileForm).map((data) => {
+        form.append(data[0], data[1]);
+        });
+
+        axios.post('/api/profile/create/', form)
         .then(resp => {
             // console.log(resp.data)
             if(resp.data.status === 'success'){

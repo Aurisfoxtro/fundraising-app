@@ -16,18 +16,27 @@ export default (props)=>{
                         <li className="nav-item">
                             <Link className="nav-link" to="/">Titulinis</Link>
                         </li>
+                        {props.show && (
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Prisijungti</Link>
                         </li>
+                        )}
+                        {props.show && (
                         <li className="nav-item">
                             <Link className="nav-link" to="/registration">Registracija</Link>
                             </li>
+                        )}
                         <li className="nav-item">
                             <Link className="nav-link" to="/create-profile">Sukurti labdaros profilį</Link>
                             </li>
-                        {props.loggedIn && (
+                        {/* {props.loggedIn && (
                         <li className="nav-item">
                             <Link className="nav-link" to="/edit">Redaguoti profilį</Link>
+                        </li>
+                        )} */}
+                        {props.loggedIn && (
+                        <li className="nav-item">
+                            <Link className='nav-link' to="/admin-panel">Administratoriaus panelė</Link>
                         </li>
                         )}
                     </ul>

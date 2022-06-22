@@ -4,9 +4,14 @@ import {Link} from 'react-router-dom'
 export default (props) =>{
     const date = new Date(props.profile.createdAt)
 
-    const handleDonation =(e)=>{
-        e.preventDefault()
+    const handleApprove =() => {
+
     }
+
+    const handleDelete = () => {
+
+    }
+
     return(
         <div className="col">
             <div className="card shadow-sm">
@@ -22,13 +27,9 @@ export default (props) =>{
                     <div className="d-flex justify-content-between align-items-center">
                         <small className="text-muted">{date.toLocaleDateString('lt-LT')}</small>
                     </div>
-                    <form onSubmit={handleDonation}>
-                        <input className="form-control mt-3" type="text" placeholder="Jūsų vardas" name="donator"/>
-                        <input className="form-control mt-1" type="number" placeholder="Aukojama suma" name="donation" />
-                        <button className='btn btn-primary mt-1' type="submit">Aukoti</button>
-                    </form>
+                    <button className='btn btn-info m-2' onClick={handleApprove}>Patvirtinti</button>
+                    <button className='btn btn-danger m-2' onClick={handleDelete}>Ištrinti</button>
                 </div>
-                
             </div>
         </div>
     )

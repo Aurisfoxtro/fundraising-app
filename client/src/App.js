@@ -9,11 +9,13 @@ import ProfileList from './components/profile-list/ProfileList.js'
 import Profile from './components/profile/Profile.js'
 import Header from './components/header/Header.js'
 import Login from './components/login/Login.js'
+import ProfileListAdmin from './components/profile-list-admin/ProfileListAdmin';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [show, setShow] = useState(true)
   const [userId, setUserId] = useState('')
 
   useEffect(()=>{
@@ -29,18 +31,20 @@ function App() {
 
   const handleLoginState = (value)=>{
     setIsLoggedIn(value)
+    setShow(!value)
   }
 
   return (
     <Router>
-    <Header loggedIn={isLoggedIn}/>
+    <Header show={show} loggedIn={isLoggedIn}/>
       <Routes>
         <Route path="/" element={<ProfileList />}/>
-        <Route path="/login" element={<Login state={handleLoginState}/>}/>
-        <Route path="/registration" element={<Registration/>}/>
+        {show && (<Route path="/login" element={<Login state={handleLoginState}/>}/>)}
+        {show && (<Route path="/registration" element={<Registration/>}/>)}
         <Route path="/create-profile" element={<ProfileCreate />} />
         <Route path="/profile/:id" element={<Profile />}/>
-        {isLoggedIn && (<Route path="/edit" element={<ProfileEdit />} />)}
+        {/* {isLoggedIn && (<Route path="/edit" element={<ProfileEdit />} />)} */}
+        {isLoggedIn && (<Route path="/admin-panel" element={<ProfileListAdmin />} />)}
       </Routes>
     </Router>
   );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from 'axios'
 import Container from 'react-bootstrap/Container'
 import Alert from 'react-bootstrap/Alert'
-import ProfileBox from '../profile-box/ProfileBox.js'
+import ProfileBoxAdmin from '../profile-box-admin/ProfileBoxAdmin.js'
 
 export default () => {
 
@@ -52,7 +52,7 @@ export default () => {
     }
     const List = () => {
         return profiles.map((value, index)=>(
-            <ProfileBox key={index} profile={value}/>
+            <ProfileBoxAdmin key={index} profile={value}/>
         ))
     }
 

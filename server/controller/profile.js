@@ -151,10 +151,10 @@ Router.post('/create', profileFileFields, profileSchema, async (req, res) =>{
         }
         let ProfileId = false
         if(ProfileId = await insert(req.body)){
-            req.files.portfolio_items.map(async image=> {
-                let path = image.path.replaceAll('\\', '/') 
-                await portfolioInsert({image_url: path, ProfileId})
-            })
+            // req.files.portfolio_items.map(async image=> {
+            //     let path = image.path.replaceAll('\\', '/') 
+            //     await portfolioInsert({image_url: path, ProfileId})
+            // })
             res.json({status: 'success', message: 'Profilis sėkmingai sukurtas'})
         }else{
             res.json({status: 'danger', message: 'Įvyko klaida'})
