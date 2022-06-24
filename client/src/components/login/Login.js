@@ -43,7 +43,7 @@ export default (props) =>{
             if(resp.data.status === 'success'){
                 props.state(true)
                 setTimeout( ()=> {
-                    navigate('/')
+                    navigate('/admin-panel')
                 }, 2000)
             }
         })

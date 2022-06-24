@@ -14,7 +14,9 @@ export default ()=>{
         // subheadline: '',
         description: '',
         profile_image: '',
-        target_sum: ''
+        target_sum: '',
+        approved: 0,
+        success: 0
         // hourly_rate: 5,
         // location: ''
     })

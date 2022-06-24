@@ -5,12 +5,14 @@ export const profile = (sequelize) => {
     const schema = {
         // headline: {type: DataTypes.STRING},
         // subheadline: {type: DataTypes.STRING},
-        description: {type: DataTypes.STRING},
+        description: {type: DataTypes.STRING, allowNull: false},
         // hourly_rate: {type: DataTypes.INTEGER, allowNull: false},
-        profile_image: {type: DataTypes.STRING},
-        target_sum: {type: DataTypes.INTEGER},
-        funded_sum: {type: DataTypes.INTEGER},
-        funded_history_id: {type: DataTypes.INTEGER}
+        profile_image: {type: DataTypes.STRING, allowNull: false},
+        target_sum: {type: DataTypes.INTEGER, allowNull: false},
+        approved: {type: DataTypes.INTEGER},
+        success: {type: DataTypes.INTEGER}
+        // funded_sum: {type: DataTypes.INTEGER},
+        // funded_history_id: {type: DataTypes.INTEGER}
         // location: {type: DataTypes.STRING}
     }
 

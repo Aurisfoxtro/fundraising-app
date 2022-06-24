@@ -3,7 +3,8 @@ import mysql from 'mysql2/promise'
 import {Sequelize} from 'sequelize'
 import {users} from '../model/users.js'
 import {profile} from "../model/profile.js"
-import { portfolio } from '../model/portfolio.js'
+// import { portfolio } from '../model/portfolio.js'
+import {donations} from '../model/donations.js'
 
 const config = await loadJsonFile('./config.json')
 
@@ -22,7 +23,8 @@ try{
 
     database.Users = users(sequelize)
     database.Profile = profile(sequelize)
-    database.Portfolio = portfolio(sequelize)
+    // database.Portfolio = portfolio(sequelize)
+    database.Donations = donations(sequelize)
 
     await sequelize.sync({alter: true})
 

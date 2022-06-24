@@ -11,7 +11,7 @@ export default () => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
-    axios.get('/api/profile/')
+    axios.get('/api/profile/approved')
         .then(resp => {
             setIsLoading(false)
 

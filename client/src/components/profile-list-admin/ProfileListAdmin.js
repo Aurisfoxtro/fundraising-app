@@ -9,6 +9,7 @@ export default () => {
     const [profiles, setProfiles] = useState([])
     const [filter, setFilter] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
+    const [messages, setMessages] = useState({message: "", status: ""})
 
     useEffect(()=>{
     axios.get('/api/profile/')
@@ -52,7 +53,7 @@ export default () => {
     }
     const List = () => {
         return profiles.map((value, index)=>(
-            <ProfileBoxAdmin key={index} profile={value}/>
+            <ProfileBoxAdmin key={index} setMessages={setMessages} profile={value}/>
         ))
     }
 
@@ -95,7 +96,7 @@ export default () => {
 
     return(
         <Container>
-            <h1>Labdaringos idėjos ieško jūsų paramos:</h1>
+            <h1>Labdaringų idėjų sąrašas:</h1>
             {isLoading ?
              'Duomenys kraunasi...':(
                  <>
@@ -109,6 +110,9 @@ export default () => {
                         <button className="btn btn-primary mt-3" onClick={sortAscending}>Didėjančia tvarka</button>
                         <button className="btn btn-primary mt-3" onClick={sortDescending}>Mažėjančia tvarka</button>
                     </div> */}
+                    {messages.message && (
+                        <Alert variation={messages.status}>{messages.message}</Alert>
+                    )}
                     <ListContainer />
                 </>
              )

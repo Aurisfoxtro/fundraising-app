@@ -2,7 +2,7 @@ import {database} from '../database/connection.js'
 
 export const getAll = async (profileId) =>{
     try{
-        return await database.Portfolio.findAll({where: {profileId}, raw: true})
+        return await database.Donations.findAll({where: {profileId}, raw: true})
     }catch{
         return false
     }

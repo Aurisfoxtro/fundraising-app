@@ -8,9 +8,18 @@ export const getAll = async (conditions = {}) =>{
     }
 }
 
+export const getApproved = async () =>{
+    try{
+        return await database.Profile.findAll({where:{approved: 1}}, {raw: true})
+    }catch{
+        return false
+    }
+}
+
 export const getById = async (id) =>{
     try{
-        return await database.Profile.findByPk(id, {raw: true})
+        return await database.Profile.findByPk(id)
+        // return await database.Profile.findByPk(id, {raw: true})
     }catch{
         return false
     }
@@ -37,7 +46,7 @@ export const exists = async (fields = {}) => {
 
 export const update = async (id, data)=>{
     try{
-        database.Profile.update(data, { where: {id} })
+        await database.Profile.update(data, { where: {id} })
         return true
     }catch{
         return false
@@ -55,9 +64,21 @@ export const insert = async(data) => {
     }
 }
 
+export const insertDonation = async(data) => {
+    try{
+        const donation = new database.Donations(data)
+        await donation.save()
+        // return donation.dataValues.id  //ar tikrai?
+    }catch(e){
+        console.log(e)
+        return false
+    }
+}
+
 export const remove = async (id) =>{
     try{
-        await getById(id).destroy()
+        const profile = await getById(id)
+        await profile.destroy()
         return true
     }catch{
         return false
