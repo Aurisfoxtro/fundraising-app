@@ -3,6 +3,7 @@ import axios from 'axios'
 import Container from 'react-bootstrap/Container'
 import Alert from 'react-bootstrap/Alert'
 import ProfileBox from '../profile-box/ProfileBox.js'
+// import { profile } from "../../../../server/model/profile.js"
 
 export default () => {
 
@@ -56,10 +57,28 @@ export default () => {
         ))
     }
 
+    const ListAbove = () => {
+        return profiles.map((value, index)=>{
+            if(value.success === 0){
+                return <ProfileBox key={index} profile={value}/>
+            }
+        })
+    }
+
+    const ListBelow = () => {
+        return profiles.map((value, index)=>{
+            if(value.success === 1){
+                return <ProfileBox key={index} profile={value}/>
+            }
+        })
+    }
+
     const ListContainer = () =>{
         return(
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 pt-5">
-             <List />
+             {/* <List /> */}
+             <ListAbove />
+             <ListBelow />
              </div>
         )
     }

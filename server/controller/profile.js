@@ -248,7 +248,21 @@ Router.get('/edit/:user_id', auth, async (req, res)=>{
     }
 })
 
-Router.put('/update/:id', auth, profileSchema, async (req, res)=>{
+// Router.put('/update/:id', auth, profileSchema, async (req, res)=>{
+//     const id = req.params.id
+//     const profile = req.body
+//     try{
+//         await update(id, profile)
+//         // const portfolio = await portfolioItems(profile.id)
+//         // if(portfolio)
+//         //     profile.portfolio = portfolio
+//         res.json({message: "Profilis sėkmingai atnaujintas", status: 'success'})
+//     }catch{
+//         res.json({message: 'Profilis nebuvo atnaujintas', status: 'danger'})
+//     }
+// })
+
+Router.put('/update/:id', profileSchema, async (req, res)=>{
     const id = req.params.id
     const profile = req.body
     try{
